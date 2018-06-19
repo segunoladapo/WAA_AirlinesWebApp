@@ -124,4 +124,11 @@ public class Airport {
 		}
 		return success;
 	}
+
+	@Override
+	public String toString() {
+		return airportcode ;
+	}
+	
+	
 }

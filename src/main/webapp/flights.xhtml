@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>FMS</title>
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</h:head>
+<h:body style="font-family:'Century Gothic';font-size:10pt">
+	<div class="container-fluid">
+		<br />
+		<div class="card">
+			<h:form>
+				<div class="card-header">
+					<h:panelGrid columns="5">
+						<h:commandButton action="flights.xhtml" value="Flight Filters"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flightsList.xhtml" value="Flights List"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flights.xhtml" value="Manage Airlines"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flights.xhtml" value="Manage Airports"
+							styleClass="btn btn-info" />
+					</h:panelGrid>
+				</div>
+			</h:form>
+			<div class="card-body">
+				<h:form>
+					<h:panelGrid columns="3">
+						<h:selectOneMenu id="byAirline" value="#{flightBean.selectedName}"
+							styleClass="form-control">
+							<f:ajax listener="#{flightBean.getSelectedFlights()}"
+								render="flightList" />
+							<f:selectItem itemLabel="By Airline (Default all)"
+								itemValue="all"></f:selectItem>
+							<f:selectItems value="#{flightBean.airlines}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:selectOneMenu id="byDeparture"
+							value="#{flightBean.selectedOrigin}" styleClass="form-control">
+							<f:ajax listener="#{flightBean.getFlightByOrigin()}"
+								render="flightList" />
+							<f:selectItem itemLabel="By Departure Airport"
+								itemValue="all"></f:selectItem>
+							<f:selectItems value="#{flightBean.airports}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:selectOneMenu id="byDestination"
+							value="#{flightBean.selectedDestination}"
+							styleClass="form-control">
+							<f:ajax listener="#{flightBean.getFlightByDestination()}"
+								render="flightList" />
+							<f:selectItem itemLabel="By Destination Airport" itemValue="all"></f:selectItem>
+							<f:selectItems value="#{flightBean.airports}"></f:selectItems>
+						</h:selectOneMenu>
+					</h:panelGrid>
+					<h:dataTable value="#{flightBean.flights}" var="flg"
+						id="flightList" styleClass="table">
+						<h:column>
+							<f:facet name="header">ID</f:facet>    				
+      #{flg.id}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Flight Number</f:facet>    				
+      #{flg.flightnr}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Airline</f:facet>    				
+      #{flg.airline}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Departure Date</f:facet>    				
+      #{flg.departureDate}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Departure Time</f:facet>    				
+      #{flg.departureTime}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Arrival Date</f:facet>    				
+      #{flg.arrivalDate}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Arrival Time</f:facet>    				
+      #{flg.arrivalTime}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Origin Code</f:facet>    				
+      #{flg.origin.airportcode}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Origin Name</f:facet>    				
+      #{flg.origin.name}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Destination Code</f:facet>    				
+      #{flg.destination.airportcode}
+   </h:column>
+						<h:column>
+							<f:facet name="header">Destination</f:facet>    				
+      #{flg.destination.name}
+   </h:column>
+						<h:column>
+							<f:facet name="header">AirPlane Model</f:facet>    				
+      #{flg.airplane.model}
+   </h:column>
+						<h:column>
+							<f:facet name="header">AirPlane capacity</f:facet>    				
+      #{flg.airplane.capacity}
+   </h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+			<div class="card-footer">Flights list</div>
+		</div>
+	</div>
+</h:body>
+</html>

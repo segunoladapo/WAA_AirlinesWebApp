@@ -40,6 +40,3 @@ insert into flight (id,arrivalDate,arrivalTime,departureDate,departureTime,fligh
 --Derby
 UPDATE APP."SEQUENCE" SET SEQ_COUNT=1000 WHERE SEQ_NAME='SEQ_GEN';
 
-
-
-
