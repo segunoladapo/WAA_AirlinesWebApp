@@ -6,7 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+	<title>FMS</title>
 </h:head>
 <h:body>
 	<h:form>
@@ -28,9 +28,11 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Operation</f:facet>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="3">
 					<h:commandButton value="Edit" action="#{airlineBean.update(air)}" />
 					<h:commandButton value="Remove" action="#{airlineBean.delete(air)}" />
+					<h:commandButton value="Add Flight" action="#{airlineBean.delete(air)}">
+					</h:commandButton>
 				</h:panelGrid>
 			</h:column>
 		</h:dataTable>
