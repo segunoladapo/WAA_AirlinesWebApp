@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel for="aName">Airport Name:</h:outputLabel>
+			<h:inputText value="#{airportBean.airport.name}" id="aName"></h:inputText>
+			<h:commandButton value="Create Airport" action="#{airportBean.create()}" />
+		</h:panelGrid>
+	</h:form>
+	<h:form>
+		<h:dataTable value="#{airportBean.airports}" var="air" id="airList">
+			<h:column>
+				<f:facet name="header">Airport ID</f:facet>
+				#{air.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Airport Name</f:facet>
+				<h:inputText value="#{air.name}" id="aName"></h:inputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Operation</f:facet>
+				<h:panelGrid columns="2">
+					<h:commandButton value="Edit" action="#{airportBean.update(air)}" />
+					<h:commandButton value="Remove" action="#{airportBean.delete(air)}" />
+				</h:panelGrid>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
