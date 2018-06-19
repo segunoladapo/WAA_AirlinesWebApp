@@ -82,5 +82,10 @@ public class FlightService {
 	public List<Flight> findAll() {
 		return flightDao.findAll();
 	}
+        
+          //////////////////////////////////////////////////
+         public List<Flight> findByFilters(Date date, String airlineName, String departure, String destination) {
+        return flightDao.findByFilters(date, airlineName, departure, destination);
+        }
 
 }

@@ -137,5 +137,36 @@ public class FlightDao {
 	public List<Flight> findAll() {
 		return entityManager.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
+        
+        
+         ///////////////////////////////////////////////
+        @SuppressWarnings("unchecked")
+	public List<Flight> findByFilters(Date date, String airlineName, String departure, String destination) {
+		List<Flight> result;
+		String sql = "";
+
+		if (date != null) {
+			sql = "select f from Flight f where f.arrivalDate=:date and f.airline.name like :airlineName and f.origin.name like :departure and f.destination.name like :destination";
+			Query query = entityManager.createQuery(sql, Flight.class);
+			query.setParameter("date", date, TemporalType.DATE);
+			query.setParameter("airlineName", "%" + airlineName + "%");
+			query.setParameter("departure", "%" + departure + "%");
+			query.setParameter("destination", "%" + destination + "%");
+			result = query.getResultList();
+		} else {
+			sql = "select f from Flight f where f.airline.name like :airlineName and f.origin.name like :departure and f.destination.name like :destination";
+			Query query = entityManager.createQuery(sql, Flight.class);
+			query.setParameter("airlineName", "%" + airlineName + "%");
+			query.setParameter("departure", "%" + departure + "%");
+			query.setParameter("destination", "%" + destination + "%");
+			result = query.getResultList();
+		}
+
+		return result;
+
+	}
+        
+
+        
 
 }
