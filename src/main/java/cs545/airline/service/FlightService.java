@@ -26,9 +26,9 @@ public class FlightService {
 	// public
 
 	// CREATE MUST BE DONE THROUGH RELATED OBJECT
-	// public void create(Flight flight) {
-	// flightDao.create(flight);
-	// }
+	 public void create(Flight flight) {
+	 flightDao.create(flight);
+	 }
 
 	// DELETE MUST BE DONE THROUGH UPDATE ON RELATED OBJECT
 	// public void delete(Flight flight) {
