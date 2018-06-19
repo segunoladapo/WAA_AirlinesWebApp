@@ -30,33 +30,7 @@
 			</h:form>
 			<div class="card-body">
 				<h:form>
-					<h:panelGrid columns="3">
-						<h:selectOneMenu id="byAirline" value="#{flightBean.selectedName}"
-							styleClass="form-control">
-							<f:ajax listener="#{flightBean.getSelectedFlights()}"
-								render="flightList" />
-							<f:selectItem itemLabel="By Airline (Default all)"
-								itemValue="all"></f:selectItem>
-							<f:selectItems value="#{flightBean.airlines}"></f:selectItems>
-						</h:selectOneMenu>
-						<h:selectOneMenu id="byDeparture"
-							value="#{flightBean.selectedOrigin}" styleClass="form-control">
-							<f:ajax listener="#{flightBean.getFlightByOrigin()}"
-								render="flightList" />
-							<f:selectItem itemLabel="By Departure Airport"
-								itemValue="all"></f:selectItem>
-							<f:selectItems value="#{flightBean.airports}"></f:selectItems>
-						</h:selectOneMenu>
-						<h:selectOneMenu id="byDestination"
-							value="#{flightBean.selectedDestination}"
-							styleClass="form-control">
-							<f:ajax listener="#{flightBean.getFlightByDestination()}"
-								render="flightList" />
-							<f:selectItem itemLabel="By Destination Airport" itemValue="all"></f:selectItem>
-							<f:selectItems value="#{flightBean.airports}"></f:selectItems>
-						</h:selectOneMenu>
-					</h:panelGrid>
-					<h:dataTable value="#{flightBean.flights}" var="flg"
+					<h:dataTable value="#{flightBean.flightslist}" var="flg"
 						id="flightList" styleClass="table">
 						<h:column>
 							<f:facet name="header">ID</f:facet>    				
