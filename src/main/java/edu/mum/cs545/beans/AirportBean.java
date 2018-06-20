@@ -31,6 +31,7 @@ public class AirportBean implements  Serializable{
 		airportService.create(airport);
 		airport=new Airport();
 		return "airports";
+                
 	}
 	
 	public String update(Airport airport) {
