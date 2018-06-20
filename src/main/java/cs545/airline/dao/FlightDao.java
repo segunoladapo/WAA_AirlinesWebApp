@@ -137,5 +137,11 @@ public class FlightDao {
 	public List<Flight> findAll() {
 		return entityManager.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
+        
+        
+      
+        
+
+        
 
 }
