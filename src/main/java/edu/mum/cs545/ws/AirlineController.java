@@ -1,4 +1,4 @@
-package cs545.airline.api;
+package edu.mum.cs545.ws;
 
 
 import cs545.airline.model.Airline;

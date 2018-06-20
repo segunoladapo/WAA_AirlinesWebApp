@@ -9,35 +9,83 @@ and open the template in the editor.
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-  <h:head>
-	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+<h:head>
+	<title><h:outputText value="FMS" /></title>
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
 </h:head>
-<h:body>
-	<h:form>
-		<h:panelGrid columns="3">
-			<h:outputLabel for="aName">Airport Name:</h:outputLabel>
-			<h:inputText value="#{airportBean.airport.name}" id="aName"></h:inputText>
-			<h:commandButton value="Create Airport" action="#{airportBean.create()}" />
-		</h:panelGrid>
-	</h:form>
-	<h:form>
-		<h:dataTable value="#{airportBean.airports}" var="air" id="airList">
-			<h:column>
-				<f:facet name="header">Airport ID</f:facet>
+<h:body style="font-family:'Century Gothic';font-size:10pt">
+	<div class="container-fluid">
+		<br />
+		<div class="card">
+			<h:form>
+				<div class="card-header">
+					<h:panelGrid columns="5">
+						<h:commandButton action="flights.xhtml" value="Flight Filters"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flightsList.xhtml" value="Flights List"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airlines.xhtml" value="Manage Airlines"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airports.xhtml" value="Manage Airports"
+							styleClass="btn btn-info" />
+					</h:panelGrid>
+				</div>
+			</h:form>
+			<div class="card-body">
+				<h:form>
+					<h:panelGrid columns="4">
+						<h:outputLabel for="aName">Airport Code:</h:outputLabel>
+						<h:inputText value="#{airportBean.airport.airportcode}" id="aCode"
+							styleClass="form-control"></h:inputText>
+						<h:outputLabel for="aName">Airport Name:</h:outputLabel>
+						<h:inputText value="#{airportBean.airport.name}" id="aName" styleClass="form-control"></h:inputText>
+						<h:outputLabel for="aName">City:</h:outputLabel>
+						<h:inputText value="#{airportBean.airport.city}" id="aCity" styleClass="form-control"></h:inputText>
+						<h:outputLabel for="aName">Airport Country:</h:outputLabel>
+						<h:inputText value="#{airportBean.airport.country}" id="aCountry" styleClass="form-control"></h:inputText>
+						<h:outputLabel for="plholder1"></h:outputLabel>
+						<h:outputLabel for="plholder2"></h:outputLabel>
+						<h:outputLabel for="plholder3"></h:outputLabel>
+						<h:commandButton value="Create Airport"
+							action="#{airportBean.create()}" styleClass="btn btn-primary"/>
+					</h:panelGrid>
+				</h:form><br />
+				<h:form>
+					<h:dataTable value="#{airportBean.airports}" var="air" id="airList" styleClass="table">
+						<h:column>
+							<f:facet name="header">Airport ID</f:facet>
 				#{air.id}
 			</h:column>
-			<h:column>
-				<f:facet name="header">Airport Name</f:facet>
-				<h:inputText value="#{air.name}" id="aName"></h:inputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Operation</f:facet>
-				<h:panelGrid columns="2">
-					<h:commandButton value="Edit" action="#{airportBean.update(air)}" />
-					<h:commandButton value="Remove" action="#{airportBean.delete(air)}" />
-				</h:panelGrid>
-			</h:column>
-		</h:dataTable>
-	</h:form>
+						<h:column>
+							<f:facet name="header">Airport code</f:facet>
+							<h:inputText value="#{air.airportcode}" id="aCode" styleClass="form-control"></h:inputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Airport Name</f:facet>
+							<h:inputText value="#{air.name}" id="aName" styleClass="form-control"></h:inputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">City</f:facet>
+							<h:inputText value="#{air.city}" id="aCity" styleClass="form-control"></h:inputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Country</f:facet>
+							<h:inputText value="#{air.country}" id="aCountry" styleClass="form-control"></h:inputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Operation</f:facet>
+							<h:panelGrid columns="2">
+								<h:commandButton value="E"
+									action="#{airportBean.update(air)}" styleClass="btn btn-success"/>
+								<h:commandButton value="R"
+									action="#{airportBean.delete(air)}" styleClass="btn btn-danger"/>
+							</h:panelGrid>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+		</div>
+	</div>
 </h:body>
 </html>
