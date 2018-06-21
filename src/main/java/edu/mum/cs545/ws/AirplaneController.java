@@ -1,10 +1,8 @@
-package cs545.airline.api;
+package edu.mum.cs545.ws;
 
-
-
-import cs545.airline.model.Airport;
+import cs545.airline.model.Airplane;
 import cs545.airline.model.ErrorMessage;
-import cs545.airline.service.AirportService;
+import cs545.airline.service.AirplaneService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,40 +12,42 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Named
-@Path("airport")
-public class AirportController {
+@Path("airplane")
+public class AirplaneController {
+
+
     @Inject
-    private AirportService airportService;
+    private AirplaneService airplaneService;
 
     @GET
     @Produces({"application/xml", "application/json"})
-    public List<Airport> getAllAirports() {
-        return airportService.findAll();
+    public List<Airplane> getAllAirplane() {
+        return airplaneService.findAll();
     }
 
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Response gietAirportById(@PathParam("id") long id) {
-        Airport airport = new Airport();
-        airport.setId(id);
-        airport = airportService.find(airport);
-        if (airport == null) {
+    public Response getAirplaneById(@PathParam("id") long id) {
+        Airplane airplane = new Airplane();
+        airplane.setId(id);
+        airplane = airplaneService.find(airplane);
+        if (airplane == null) {
             return Response.status(404).build();
         }
-        return Response.status(200).entity(airport).build();
+        return Response.status(200).entity(airplane).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createAirport(Airport airport) {
+    public Response createAirplane(Airplane airplane) {
         try {
-            airportService.create(airport);
+            airplaneService.create(airplane);
         } catch (Exception ex) {
             ErrorMessage errorMessage = new ErrorMessage();
             errorMessage.setCode("500");
-            errorMessage.setErrorMsg("An error occurred saving airport");
+            errorMessage.setErrorMsg("An error occurred saving Airplane");
             return Response.status(500).entity(errorMessage).build();
         }
         return Response.status(204).build();

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>FMS</title>
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</h:head>
+<h:body style="font-family:'Century Gothic';font-size:10pt">
+	<div class="container-fluid">
+		<br />
+		<div class="card">
+			<h:form>
+				<div class="card-header">
+					<h:panelGrid columns="5">
+						<h:commandButton action="flights.xhtml" value="Flight Filters"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flightsList.xhtml" value="Flights List"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airlines.xhtml" value="Manage Airlines"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airports.xhtml" value="Manage Airports"
+							styleClass="btn btn-info" />
+					</h:panelGrid>
+				</div>
+			</h:form>
+			<div class="card-body">
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputLabel for="aName">Airline :</h:outputLabel>
+						<h:selectOneMenu id="airplane"
+							value="#{flightCreationBean.airlineName}"
+							styleClass="form-control">
+							<f:selectItems value="#{flightCreationBean.getAirlines()}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:outputLabel for="departureAirport">Origin Airport :</h:outputLabel>
+						<h:selectOneMenu id="departureAirport"
+							value="#{flightCreationBean.origin}" styleClass="form-control">
+							<f:selectItems value="#{flightCreationBean.getAirports()}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:outputLabel for="destinationAirport">Destination Airport :</h:outputLabel>
+						<h:selectOneMenu id="destinationAirport"
+							value="#{flightCreationBean.destination}"
+							styleClass="form-control">
+							<f:selectItems value="#{flightCreationBean.getAirports()}"></f:selectItems>
+						</h:selectOneMenu>
+						<br />
+						<h:outputLabel></h:outputLabel>
+						<h:commandButton value="Next step"
+							action="flightCreation_secondFlow" styleClass="btn btn-primary">
+						</h:commandButton>
+						<br />
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
