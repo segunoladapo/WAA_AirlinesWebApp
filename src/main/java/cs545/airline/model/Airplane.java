@@ -95,4 +95,11 @@ public class Airplane {
 		}
 		return success;
 	}
+
+	@Override
+	public String toString() {
+		return serialnr+"/"+model;
+	}
+	
+	
 }

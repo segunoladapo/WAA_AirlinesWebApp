@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="FMS" /></title>
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</h:head>
+<h:body style="font-family:'Century Gothic';font-size:10pt">
+	<div class="container-fluid">
+		<br />
+		<div class="card">
+			<h:form>
+				<div class="card-header">
+					<h:panelGrid columns="5">
+						<h:commandButton action="flights.xhtml" value="Flight Filters"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flightsList.xhtml" value="Flights List"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airlines.xhtml" value="Manage Airlines"
+							styleClass="btn btn-info" />
+						<h:commandButton action="airports.xhtml" value="Manage Airports"
+							styleClass="btn btn-info" />
+					</h:panelGrid>
+				</div>
+			</h:form>
+			<div class="card-body">
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputLabel for="aFlightNmbr">Flight Number:</h:outputLabel>
+						<h:inputText value="#{flightCreationBean.flight.flightnr}" id="aFlightNmbr"
+							styleClass="form-control"></h:inputText>
+						<h:outputLabel for="departureDateAndTime">Departure Date and Time:</h:outputLabel>
+						<h:inputText value="#{flightCreationBean.departureDate}" id="departureDateAndTime"
+							styleClass="form-control"></h:inputText>
+						<h:outputLabel for="arrivalDateAndTime">Arrival Date and Time</h:outputLabel>
+						<h:inputText value="#{flightCreationBean.arrivalDate}" id="arrivalDateAndTime"
+							styleClass="form-control"></h:inputText>
+						<h:outputLabel for="aName">Airplane:</h:outputLabel>
+						<h:selectOneMenu id="airplane" value="#{flightCreationBean.airplaneName}"
+							styleClass="form-control">
+							<f:selectItems value="#{flightCreationBean.getAirplanes()}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:commandButton value="Confirm Data"
+							action="returnFromCreationFlow" styleClass="btn btn-primary" />
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

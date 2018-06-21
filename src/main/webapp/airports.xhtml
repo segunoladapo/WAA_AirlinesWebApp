@@ -20,7 +20,7 @@ and open the template in the editor.
 		<div class="card">
 			<h:form>
 				<div class="card-header">
-					<h:panelGrid columns="5">
+					<h:panelGrid columns="6">
 						<h:commandButton action="flights.xhtml" value="Flight Filters"
 							styleClass="btn btn-info" />
 						<h:commandButton action="flightsList.xhtml" value="Flights List"
@@ -28,6 +28,8 @@ and open the template in the editor.
 						<h:commandButton action="airlines.xhtml" value="Manage Airlines"
 							styleClass="btn btn-info" />
 						<h:commandButton action="airports.xhtml" value="Manage Airports"
+							styleClass="btn btn-info" />
+						<h:commandButton action="flightCreation" value="Add New Flight"
 							styleClass="btn btn-info" />
 					</h:panelGrid>
 				</div>
@@ -39,47 +41,56 @@ and open the template in the editor.
 						<h:inputText value="#{airportBean.airport.airportcode}" id="aCode"
 							styleClass="form-control"></h:inputText>
 						<h:outputLabel for="aName">Airport Name:</h:outputLabel>
-						<h:inputText value="#{airportBean.airport.name}" id="aName" styleClass="form-control"></h:inputText>
+						<h:inputText value="#{airportBean.airport.name}" id="aName"
+							styleClass="form-control"></h:inputText>
 						<h:outputLabel for="aName">City:</h:outputLabel>
-						<h:inputText value="#{airportBean.airport.city}" id="aCity" styleClass="form-control"></h:inputText>
+						<h:inputText value="#{airportBean.airport.city}" id="aCity"
+							styleClass="form-control"></h:inputText>
 						<h:outputLabel for="aName">Airport Country:</h:outputLabel>
-						<h:inputText value="#{airportBean.airport.country}" id="aCountry" styleClass="form-control"></h:inputText>
+						<h:inputText value="#{airportBean.airport.country}" id="aCountry"
+							styleClass="form-control"></h:inputText>
 						<h:outputLabel for="plholder1"></h:outputLabel>
 						<h:outputLabel for="plholder2"></h:outputLabel>
 						<h:outputLabel for="plholder3"></h:outputLabel>
 						<h:commandButton value="Create Airport"
-							action="#{airportBean.create()}" styleClass="btn btn-primary"/>
+							action="#{airportBean.create()}" styleClass="btn btn-primary" />
 					</h:panelGrid>
-				</h:form><br />
+				</h:form>
+				<br />
 				<h:form>
-					<h:dataTable value="#{airportBean.airports}" var="air" id="airList" styleClass="table">
+					<h:dataTable value="#{airportBean.airports}" var="air" id="airList"
+						styleClass="table">
 						<h:column>
 							<f:facet name="header">Airport ID</f:facet>
 				#{air.id}
 			</h:column>
 						<h:column>
 							<f:facet name="header">Airport code</f:facet>
-							<h:inputText value="#{air.airportcode}" id="aCode" styleClass="form-control"></h:inputText>
+							<h:inputText value="#{air.airportcode}" id="aCode"
+								styleClass="form-control"></h:inputText>
 						</h:column>
 						<h:column>
 							<f:facet name="header">Airport Name</f:facet>
-							<h:inputText value="#{air.name}" id="aName" styleClass="form-control"></h:inputText>
+							<h:inputText value="#{air.name}" id="aName"
+								styleClass="form-control"></h:inputText>
 						</h:column>
 						<h:column>
 							<f:facet name="header">City</f:facet>
-							<h:inputText value="#{air.city}" id="aCity" styleClass="form-control"></h:inputText>
+							<h:inputText value="#{air.city}" id="aCity"
+								styleClass="form-control"></h:inputText>
 						</h:column>
 						<h:column>
 							<f:facet name="header">Country</f:facet>
-							<h:inputText value="#{air.country}" id="aCountry" styleClass="form-control"></h:inputText>
+							<h:inputText value="#{air.country}" id="aCountry"
+								styleClass="form-control"></h:inputText>
 						</h:column>
 						<h:column>
 							<f:facet name="header">Operation</f:facet>
 							<h:panelGrid columns="2">
-								<h:commandButton value="E"
-									action="#{airportBean.update(air)}" styleClass="btn btn-success"/>
-								<h:commandButton value="R"
-									action="#{airportBean.delete(air)}" styleClass="btn btn-danger"/>
+								<h:commandButton value="E" action="#{airportBean.update(air)}"
+									styleClass="btn btn-success" />
+								<h:commandButton value="R" action="#{airportBean.delete(air)}"
+									styleClass="btn btn-danger" />
 							</h:panelGrid>
 						</h:column>
 					</h:dataTable>
